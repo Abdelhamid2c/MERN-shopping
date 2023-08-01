@@ -1,11 +1,14 @@
 
-import './App.css';
+import Foo from './components/Foo';
+import Nav from './components/Nav';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      let's start !!!!!!
-      hello
+    <div>
+      {/* <Nav />
+      <Foo /> */}
+      <Home />
     </div>
   );
 }
