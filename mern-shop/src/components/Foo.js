@@ -4,12 +4,13 @@ import Typography from '@mui/material/Typography'
 export default function Foo() {
     return (
         <Typography variant="body2" color="text.secondary" align='center' sx={{
+            mb: 1,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            mb: 2,
+
         }}>
-            Copyright@2023
+            Copyright &copy; 2023
             <br />
             LksKarf
         </Typography>

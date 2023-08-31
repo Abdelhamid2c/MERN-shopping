@@ -1,6 +1,6 @@
 import React from 'react'
 import { Products } from '../products/products.js'
-import { Stack, Grid, Container, Typography } from '@mui/material'
+import { Grid, Container, Typography } from '@mui/material'
 import Product from '../components/Product.js'
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
                 <Grid container spacing={2} pl={3}>
                     {Products.map(product => {
                         return (
-                            <Grid item sm={12} md={6} lg={4} xl={3}>
+                            <Grid key={product._id} item sm={12} md={6} lg={4} xl={3}>
                                 <Product SingleProduct={product} />
                             </Grid>
 
