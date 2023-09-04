@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/product/:id' element={<SingleProducts />} />
-          <Route path='/test' element={<Cons />} />
+          {/* <Route path='/test' element={<Cons />} /> */}
         </Routes>
       </Container>
       <Foo />

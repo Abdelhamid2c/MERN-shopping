@@ -1,15 +1,28 @@
-import React from 'react'
-import { Products } from '../products/products.js'
+import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Grid from '@mui/material/Grid';
 import { Typography, Rating, List, ListItem, Button } from '@mui/material'
-import AddShoppingCartIcon from '@mui/icons-material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import axios from 'axios';
 
 export default function SingleProducts() {
 
     const navigate = useNavigate();
     const { id } = useParams();
-    const carExiste = Products.find(car => car._id === id)
+
+    const [product, setproduct] = useState({})
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            const { data } = await axios.get(`http://localhost:2000/products/${id}`)
+            console.log(data)
+            setproduct(data)
+        }
+        fetchProduct()
+    }, [])
+
+
+    const lien = `../${product.picture}`
     return (
         <>
             <Link onClick={
@@ -23,9 +36,9 @@ export default function SingleProducts() {
                 <Grid xs={8} md={6}>
 
                     <img
-                        src={carExiste.picture}
+                        src={lien}
                         height='200'
-                        alt={carExiste.name}
+                        alt={product.name}
                     />
 
                 </Grid>
@@ -33,29 +46,29 @@ export default function SingleProducts() {
                     <List>
                         <ListItem>
                             <h2>
-                                {carExiste.name}
+                                {product.name}
                             </h2>
                         </ListItem>
                         <ListItem>
-                            <Rating value={carExiste.rating} precision={0.5} readOnly />
+                            <Rating value={product.rating} precision={0.5} readOnly />
                         </ListItem>
                         <ListItem>
                             <Typography color="text.secondary">
-                                Price : {carExiste.price} DH
+                                Price : {product.price} DH
                             </Typography>
 
                         </ListItem>
                         <ListItem >
                             <Typography variant="body2" >
-                                {carExiste.description}
+                                {product.description}
                             </Typography>
                         </ListItem>
                         <ListItem >
-                            Status : {carExiste.stocks > 0 ? 'Valable' : 'Out of stock '}
+                            Status : {product.stocks > 0 ? 'Valable' : 'Out of stock '}
                         </ListItem>
                         <ListItem >
                             <Button
-                                disabled={carExiste.stocks === 0}
+                                disabled={product.stocks === 0}
                                 variant="contained" size="small"
                                 startIcon={<AddShoppingCartIcon />}>
                                 Add to Cart
