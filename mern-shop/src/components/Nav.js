@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import { Stack, Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import LoginIcon from '@mui/icons-material/Login';
 
 export default function Nav() {
 
@@ -21,14 +23,14 @@ export default function Nav() {
                 </Typography>
                 <Stack direction='row' spacing={3}>
                     <Button color="inherit" onClick={() => { navigate('/cart') }}>
-                        Cart
+                        <ShoppingCartIcon />
                     </Button>
                     <Button color="inherit" onClick={() => { navigate('/login') }}>
-                        Login
+                        <LoginIcon />
                     </Button>
                 </Stack>
             </Toolbar>
-        </AppBar>
+        </AppBar >
 
 
     )
